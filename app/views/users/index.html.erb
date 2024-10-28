@@ -1,0 +1,45 @@
+<style>
+    #draggable { width: 150px; height: 150px; padding: 0.5em; }
+</style>
+
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Users" %>
+
+<h1>Users</h1>
+
+<div id="users">
+  <% @users.each do |user| %>
+    <%= render user %>
+    <p>
+      <%= link_to "Show this user", user %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New user", new_user_path %>
+
+
+
+<div id="draggable" class="ui-widget-content">
+  <p>Drag me around</p>
+</div>
+<!--<script src="https://code.jquery.com/jquery-3.7.1.js"></script>-->
+
+<script>
+
+    $( function() {
+        $( "#draggable" ).draggable();
+    } );
+
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Document is ready!------Vanila--------------');
+        // Your code here
+    });
+
+    $(document).ready(function() {
+        console.log('Document is ready!-----jquery');
+        // Your code here
+    });
+
+</script>
