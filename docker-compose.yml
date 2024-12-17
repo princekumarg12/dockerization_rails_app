@@ -15,8 +15,9 @@ services:
     - "5433:5432"
   user_web:
     build: ./
-#    command: [ "./wait-for-it.sh", "db:5432", "--", "./bin/rails", "server" ]  # Use wait-for-it
+    command: [ "./wait-for-it.sh", "db:5432", "--", "bundle", "exec", "rails", "server", "-b", "0.0.0.0" ]  # Use wait-for-it to wait for DB
     environment:
+      - DB_HOST=db  # Use 'db' as the host for the database in Docker
       - RAILS_ENV=${RAILS_ENV}
       - POSTGRES_HOST=db
       - POSTGRES_DB=${POSTGRES_DB}
